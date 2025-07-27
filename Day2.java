@@ -201,9 +201,9 @@ class Pat3
 }
 
 /* w
-  w w
- w w w
-  w w
+   w w
+   w w w
+   w w
    w*/
 class Pat4
  {
@@ -227,13 +227,13 @@ class Pat4
 			int j = 0;
         		while(j<n)
        			{
-         			 if(j<l)
+         			 if(j<(n-l))
           			 {
-            				System.out.print(" ");
+            				System.out.print("w ");
           			 }
           			 else
          			 {
-            				System.out.print("w ");
+            				System.out.print("  ");
           			 }
 				 j++;
         		}
@@ -315,7 +315,7 @@ class Pat6
 
 }
 
-//5. 5. Define a method to find the sum of even numbers from the series 1, 2, 3, 4, 5, ...n using continue statement.
+//5.Define a method to find the sum of even numbers from the series 1, 2, 3, 4, 5, ...n using continue statement.
 class Even
 {
 	public static void main(String[]args)
@@ -856,7 +856,7 @@ class Binary
 				val2 = b.charAt(j) - '0';
 				j--;
 			}
-                        result = ((rem + val1 + val2)>1?0:1) + result;
+                        result = ((rem + val1 + val2)==1?1:0) + result;
 			rem = (rem + val1 + val2)>1?1:0;
 		}
 		if(rem==1)
@@ -880,7 +880,20 @@ Z -> 26
 AA -> 27
 AB -> 28
 */
-
+class Excel
+{
+	public static void main(String[]args)
+	{
+		Scanner java = new Scanner(System.in);
+		System.out.println("Enter the text: ");
+		String exl = java.nextLine();
+		int res = 0, i = 0;
+		while(i<exl.length())
+		{
+			res = res * 26 + ((exl.charAt(i)-'0')+1));
+		}	
+	}
+}
 
 /*
 3. Given a string s, reverse only all the vowels in the string and return it.

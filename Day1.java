@@ -27,7 +27,7 @@ class Variable
 	{
 		int bl = 10;                          //block variable
 		final int fin = 7;                    //final variable
-		Variable.st = 8;                         //static variable initialization
+		Variable.st = 8;                      //static variable initialization
 		
 		Variable in1 = new Variable();
 		Variable in2 = new Variable();
@@ -82,14 +82,17 @@ class Equal
 		int val1 = java.nextInt();
 		System.out.println("Enter value2: ");
 		int val2 = java.nextInt();
-		if(val1>val2 || val1<val2)
+		int res = val1^val2;
+		try
 		{
-			System.out.println("It is not equal");
+			int temp = res/1;
+			System.out.println("The given values are not equal");
 		}
-		else
+		catch(Exception e)
 		{
-			System.out.println("It is equal");
+			System.out.println("The values given are equal");
 		}
+
 	}	
 }
 
@@ -133,7 +136,7 @@ class Power
 		int res = 1;
                 while(res<=num)
   		{
-			res = res*2;
+			res = res*2;                                                      //(num&(num-1))==0
 			if(res == num)
 			{
 				break;

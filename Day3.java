@@ -181,9 +181,9 @@ class Vehicle
 
 	public Vehicle(int size)
 	{
-		vehicle_Id = new int[size];
-		brand_Name = new String[size];
-		price = new double[size];
+		this.vehicle_Id = new int[size];
+		this.brand_Name = new String[size];
+		this.price = new double[size];
 	}
 	
 	public void addVehicle(int id, String brand, double rate)
@@ -204,8 +204,8 @@ class Vehicle
 	public void list_Vehicles()
 	{
 		System.out.println("Number of cars: "+count);
-		System.out.println("VEHICLE_ID "+"\tBRAND_NAME "+"\tPRICE");
-		for(int i = 0;i<=count;i++)
+		System.out.println("VEHICLE_ID "+"\tBRAND_NAME "+"\t\tPRICE");
+		for(int i = 0;i<price.length;i++)
 		{
 			System.out.println(vehicle_Id[i] + "\t\t" + brand_Name[i] + "\t\t" + price[i]);
 		}
@@ -238,6 +238,7 @@ class Vehicle
 				case 2: 
 					vc.list_Vehicles();
 					break;
+
 
 				case 3: 
 					System.out.println("Shutting Down!!");
@@ -281,12 +282,112 @@ Also Check how many .class files are generated.
 */
 class Store
 {
+	static String storeName;
+	static String storeLocation;
+	
+	static void setStoreDetails(String name, String location)
+	{
+		storeName = name;
+		storeLocation = location;
+	}
+	
+	static void displayStoreDetails()
+	{
+		System.out.println("storeName\t\t"+"storeLocation");
+		System.out.println(storeName +"\t\t"+ storeLocation);
+		System.out.println();
+	
+	}
+	List<Product>prod = new ArrayList<>();
+	
+	public void addProduct(Product product)
+	{
+		prod.add(product);
+	}
+	
+	public void displayAllProduct()
+	{
+		System.out.printf("product_Id\t\t" + "product_Name\t\t\t\t" + "product_Price\t\t\t\t" + "product_Quantity\t\t");
+		System.out.println("");
+		for(Product prd:prod)
+		{
+			prd.displayProduct();
+		}
+	}
+
 }
 class Product
 {
+	int product_Id;
+	String product_Name;
+	double product_Price;
+	String product_Quantity;
+	
+	public Product(int id, String name, double price, String quantity)
+	{
+		product_Id = id;
+		product_Name = name;
+		product_Price = price;
+		product_Quantity = quantity;
+	}
+
+	void displayProduct()
+	{
+		System.out.println(product_Id +"\t\t"+ product_Name +"\t\t" + product_Price + "\t\t" + product_Quantity);
+	}
 }
 class Inventory
 {
+	public static void main(String[] args)
+	{
+		Scanner java = new Scanner(System.in);
+		Store st = new Store();
+		while(true)
+		{
+		System.out.println("Enter the choice: " + "\n" + "(1)to add store" + "\n" +"(2)add products to the store" + "\n" + "(3)to display store details" +"\n"+ "(4)to view products in the store" + "\n" + "(5)to exit the store: ");
+			int choice = java.nextInt();
+			java.nextLine();
+			switch(choice)
+			{
+				case 1: 
+					System.out.println("Enter the storeName: ");
+					String name = java.nextLine();
+					System.out.println("Enter the storeLocation: ");
+					String location = java.nextLine();
+					Store.setStoreDetails(name, location);
+					break;
+				
+				case 2: 
+					System.out.println("Enter the product id: ");
+					int id = java.nextInt();
+					java.nextLine();
+					System.out.println("Enter the product name: ");
+					String pname = java.nextLine();
+					System.out.println("Enter the product price: ");
+					double price = java.nextDouble();
+					java.nextLine();
+					System.out.println("Enter the product quantity: ");
+					String quant = java.nextLine();
+					st.addProduct(new Product(id, pname, price, quant));
+					break;
+
+				case 3:
+					Store.displayStoreDetails();
+					break;
+
+				case 4:
+					st.displayAllProduct();
+					break;
+
+				case 5:
+					System.out.println("Closing the store...");
+					return;
+				
+				default: 
+					System.out.println("Enter a valid choice!!!!");
+			}
+		}
+	}
 }
 
 /*
@@ -307,11 +408,11 @@ class Employee1
 		this.name = name;
 		this.year = year;
 		this.address = address;
-		System.out.println(name + "\t"+ year + "\t\t\tL;" + address);
+		System.out.println(name + "\t"+ year + "\t\t\t" + address);
 	}
 	public static void main(String[]args)
 	{
-		System.out.println("Name"+"\tYear of joining  "+"\tAddress");
+		System.out.println("Name"+"\tYear of joining  "+"\tAddress\n");
 		Employee1 E1 = new Employee1("Robert",1994,"64C - WallsStreet");
 		Employee1 E2 = new Employee1("sam",2000, "68D - WallsStreet");
 		Employee1 E3 = new Employee1("john",1999,"26B - WallsStreet");
