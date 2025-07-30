@@ -101,8 +101,8 @@ class Pat1
 /* R R R R
    R     R
    R R R R
-   R  R
-   R   R */
+   R   R
+   R     R */
 class Pat2
 {
 	public static void main(String[]args)
@@ -337,8 +337,8 @@ class Even
 				i++;
 				continue;
 			}
-			        sum+=i;
-				i++;
+			sum+=i;
+			i++;
 		}
 		return sum;
 	}
@@ -493,7 +493,7 @@ class Prime
 			{
 				System.out.println(arr[j]);
 			}
-		j++;
+			j++;
 		}
 	}
 	
@@ -846,18 +846,28 @@ class Binary
 		int val1 = 0, val2 = 0, rem = 0;
 		while(i>=0 || j>=0)
 		{
-			if(i>=0)
-			{
-				val1 = a.charAt(i) - '0';
-				i--;
-			}
-			if(j>=0)
-			{
-				val2 = b.charAt(j) - '0';
-				j--;
-			}
-                        result = ((rem + val1 + val2)==1?1:0) + result;
-			rem = (rem + val1 + val2)>1?1:0;
+		    val1 = 0;
+		    val2 = 0;
+		    if(i>=0)
+		    {
+			val1 = a.charAt(i) - '0';
+			i--;
+		    }
+		    if(j>=0)
+		    {
+			val2 = b.charAt(j) - '0';
+			j--;
+		    }
+            	    int res = rem + val1 + val2;
+                    if((res==0)||(res==2))
+                    {
+                        result = 0+result;
+                    }
+                    else
+                    {
+                        result= 1+result;    
+                    }
+		    rem = (rem + val1 + val2)>1?1:0;
 		}
 		if(rem==1)
 		{
@@ -866,7 +876,6 @@ class Binary
 		System.out.println("The sum of the given binary values are: "+result);
 	}
 }
-
 
 /*
 2. Given an integer columnNumber, return its corresponding column title as it appears in an Excel sheet.
@@ -890,8 +899,10 @@ class Excel
 		int res = 0, i = 0;
 		while(i<exl.length())
 		{
-			res = res * 26 + ((exl.charAt(i)-'0')+1));
-		}	
+			res = res * 26 + ((exl.charAt(i)-'A')+1);
+			i++;
+		}
+		System.out.println("The integer column number of the given column title"+ res);	
 	}
 }
 
@@ -1057,8 +1068,34 @@ class Stringadd
 		System.out.println("Enter two strings to get added: ");
 		String num1 = java.nextLine();
 		String num2 = java.nextLine();
-		
-		String res = String.valueOf(Integer.parseInt(num1) + Integer.parseInt(num2));
+
+		int i = num1.length()-1;
+        	int j = num2.length()-1;
+        	int carry = 0;
+        	int val1 = 0, val2 = 0;
+        	String res = "";
+
+        	while(i>=0 || j>=0)
+       		{
+            	 	val1 = 0;
+            	    	val2 = 0;
+            		if(i>=0)
+            		{
+                		val1 = num1.charAt(i)-'0';
+                		i--;
+            		}
+            		if(j>=0)
+            		{
+                		val2 = num2.charAt(j)-'0';
+                		j--;
+            		}
+            		res = (val1 + val2 + carry)%10 + res;
+            		carry = (val1 + val2 + carry)/10;
+        	}
+        	if(carry>0)
+        	{
+            		res = carry + res;
+        	}
 		System.out.println(res);
 	}
 } 
