@@ -982,20 +982,19 @@ class Shuffle
 		String s = java.nextLine();
 		System.out.println("Enter the string t: ");
 		String t = java.nextLine();
-		boolean val = false;
-		for(int i = 0;i<t.length();i++)
-		{
-			if(!s.contains(t.substring(i,i+1)))
-			{
-				System.out.println(t.charAt(i) + " is the letter that was added");
-				val = true;
+		char[]arr1 = s.toCharArray();
+        	char[]arr2 = t.toCharArray();
+        	Arrays.sort(arr1);
+        	Arrays.sort(arr2);
+        	for(int i=0;i<arr1.length;i++)
+        	{
+            		if(arr1[i]!=arr2[i])
+            		{
+                		System.out.println("The letter that was added to t is: "+arr2[i]);
 				break;
-			}
-		}
-		if(!val)
-		{
-			System.out.println("Nothing is added");
-		}
+            		}
+        	}
+        	System.out.println("The letter that was added to t is: "+ arr2[arr2.length-1]);
 	}
 }
 

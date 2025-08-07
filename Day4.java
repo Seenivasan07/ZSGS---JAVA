@@ -86,7 +86,7 @@ Add scientific functions, such as:
 
 */
 
-//------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+//-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 import java.util.*;
 public class Day4
 {
@@ -247,7 +247,8 @@ class Motor
 	}
 }
 
-//------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+//----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
 /*
 2. Construct a base class called twoD contains x and y and methods to read and write the x and y. Create another class called threeD which is derived from twoD and also contains z and write methods to read and write z. Also write a method to find the distance of two threeD Points.
 sqrt((x2-x1)^2+(y2-y1)^2+(z2-z1)^2)
@@ -331,7 +332,8 @@ class Cons
 	}
 }
 
-//------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+//-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
 /*
 3. A class Point is declared as follows:
 class Point{
@@ -424,7 +426,7 @@ class Circle extends Point
 	}
 }
 
-//------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+//-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 /*4. Write a program to illustrate that Classes cannot be used for multiple Inheritance.
 
@@ -451,7 +453,9 @@ public class Area extends Square,Rectangle
 	}
 }
 */
-//------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+//-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
 /*
 5. Create a class named Shape with a method that prints "This is a shape". Create another class named Polygon inheriting the Shape class with the same method that prints "Polygon is a shape". Create two other classes named Rectangle and Triangle having the same method which prints "Rectangle is a polygon" and "Triangle is a polygon" respectively. Again, make another class named Square having the same method which prints "Square is a rectangle".
 Now, try calling the method by the object of each of these classes.
@@ -508,7 +512,9 @@ class Inheritance
 		s.display();
 	}
 }
-//------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+//-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
 /*
 6. Design and implement a custom Java class named MyString that mimics the behavior of Java’s built-in String class. Your class should store character data internally (e.g., using a char[] or String as input) and should provide the following string methods,
 1. int length() – Returns the number of characters.
@@ -549,8 +555,9 @@ class MyString
 	}
 
 	//to check given string is equal with existing ones....
-	public boolean check(char[]newarr)                                         
+	public boolean check(String s)                                         
 	{
+		char[]newarr = s.toCharArray();
 		if(newarr.length != arr.length)
 		{
 			return false;
@@ -619,8 +626,9 @@ class MyString
 	}
 
 	//to check the given substring is the substring of existing ones....
-	public boolean checkString(char[]ck)
+	public boolean checkString(String s)
 	{
+		char[]ck = s.toCharArray();
 		if(ck.length > arr.length)
 		{
 			return false;
@@ -635,9 +643,9 @@ class MyString
 				b = true;
 				j++;
 			}
-			else if(b && arr[i]!=ck[j])
+			else if(b && (arr[i]!=ck[j]))
 			{
-				return false;
+				b = false;
 			}
 			i++;
 		}
@@ -701,7 +709,7 @@ public class WithoutInbuilt
 					java.nextLine();
 					System.out.println("Enter the String to check: ");
 					String chk = java.nextLine();
-					String val = (m.check(chk.toCharArray()))?"Equal":"Not Equal";
+					String val = (m.check(chk))?"Equal":"Not Equal";
 					System.out.println("The Strings are : "+ val);
 					System.out.println("\n");
 					break;
@@ -736,7 +744,7 @@ public class WithoutInbuilt
 					java.nextLine();
 					System.out.println("Enter the String to check: ");
 					String ck = java.nextLine();
-					String value = (m.checkString(ck.toCharArray()))?"Present":"Not Present";
+					String value = (m.checkString(ck))?"Present":"Not Present";
 					System.out.println("The given is "+value+" in the "+str);
 					System.out.println("\n");
 					break;
@@ -770,7 +778,8 @@ public class WithoutInbuilt
 	}
 }
 
-//------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+//-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
 /*
 7. Design a calculator application using Java Inheritance.
 ‌
