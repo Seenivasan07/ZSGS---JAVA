@@ -512,6 +512,146 @@ Create classes`BusTicket,`TrainTicket, and`FlightTicket that extend the abstract
 Demonstrate runtime polymorphism by calling the`bookTicket() method using a reference of the base class/interface.
 */
 
+interface Ticket
+{
+	public void bookTicket();
+}
+
+class  BusTicket implements Ticket
+{
+	int min = 200, max = 500;
+	String busName;
+	String busType;
+	double fare;
+	
+	public BusTicket(String bus, String type)
+	{
+		this.busName = bus;
+		this.busType = type;
+		this.fare = min + (int)(Math.random()*((max - min)+1));
+		bookTicket();
+	}
+	public void bookTicket()
+	{
+		System.out.println("Bus Name: "+this.busName);
+		System.out.println("Bus Type: "+this.busType);
+		System.out.println("Ticket Fare: "+this.fare);
+		System.out.println("Ticket Booked Successfully....");
+	}	
+}
+class TrainTicket implements Ticket
+{
+	int min = 300, max = 600;
+	String traiName;
+	int traiNo;
+	double fare;
+	
+	public TrainTicket(String TraiName, int traiNo)
+	{
+	 	this.traiName = traiName;
+		this.traiNo = traiNo;
+		this.fare = min + (int)(Math.random()*((max - min)+1));
+		bookTicket();
+	}
+	public void bookTicket()
+	{
+		System.out.println("Train Name: "+this.traiName);
+		System.out.println("Train No: "+this.traiNo);
+		System.out.println("Ticket Fare: "+this.fare);
+		System.out.println("Ticket Booked Successfully....");
+	}
+}
+class FlighTicket implements Ticket
+{
+	int min = 1500, max = 3000;
+	String flightName;
+	int flightNo;
+	double fare;
+
+	public FlighTicket(String flight, int flightNo)
+	{
+		this.flightName = flight;
+		this.flightNo = flightNo;
+		this.fare = min + (int)(Math.random()*((max - min) + 1));
+		bookTicket();
+	}
+	public void bookTicket()
+	{
+		System.out.println("Flight Name: "+this.flightName);
+		System.out.println("Flight No: "+this.flightNo);
+		System.out.println("Ticket Fare: "+this.fare);
+		System.out.println("Ticket Booked Successfully....");
+	}
+}
+
+class BookTicket
+{
+	public static void ticketDetails(String name, String boarding, String destiny)
+	{			       
+		System.out.println("\n-------------------Ticket Details------------------\n");
+		System.out.println("Passenger Name: "+name);
+		System.out.println("Boarding Point: "+boarding);
+		System.out.println("Dropping Point: "+destiny);
+	}
+
+	public static void main(String[]args)
+	{
+		Scanner java = new Scanner(System.in);
+		System.out.println("----------------Ticket Booking System----------------\n");
+		System.out.println("Enter the Boarding Point: ");
+		String boarding = java.nextLine();
+		System.out.println("Enter the Destination: ");
+		String destiny = java.nextLine();
+		System.out.println("Enter the Passenger Name: ");
+		String name = java.nextLine();
+		Ticket t;
+		
+		while(true)
+		{
+			System.out.println("\nEnter the mode of transport: \n1. Bus \n2. Train \n3. Flight");
+			int mode = java.nextInt();
+			java.nextLine();
+			switch(mode)
+			{
+				case 1: 
+					System.out.println("Enter the BusType: ");
+					String bustype = java.nextLine();
+					System.out.println("Enter the BusName: ");
+					String busname = java.nextLine();
+					ticketDetails(name, boarding, destiny);
+					t = new BusTicket(bustype, busname);
+					System.out.println("\n>>There ain't no journey what don't change you some<<");
+					return;
+
+				case 2:
+					System.out.println("Enter the TrainNo: ");
+					int traino = java.nextInt();
+					java.nextLine();
+					System.out.println("Enter the TrainName: ");
+					String trainame = java.nextLine();
+					ticketDetails(name, boarding, destiny);
+					t = new TrainTicket(trainame, traino);
+					System.out.println("\n>>There ain't no journey what don't change you some<<");
+					return;
+
+				case 3:
+					System.out.println("Enter the FlightNo: ");
+					int flightno = java.nextInt();
+					java.nextLine();
+					System.out.println("Enter the FlightName: ");
+					String flightname = java.nextLine();
+					ticketDetails(name, boarding, destiny);
+					t = new FlighTicket(flightname, flightno);
+					System.out.println("\n>>There ain't no journey what don't change you some<<");
+					return;
+	
+				default:
+					System.out.println("Enter the correct choice..!!!");
+			}
+	
+		}
+	}
+}
 
 
 

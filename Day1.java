@@ -83,17 +83,17 @@ class Equal
 		System.out.println("Enter value2: ");
 		int val2 = java.nextInt();
 		int res = val1^val2;
-		try
+		boolean[]arr = new boolean[res + 1];
+		arr[res] = true;
+		if(arr[0])
 		{
-			int temp = res/1;
-			System.out.println("The given values are not equal");
+			System.out.println("Given Numbers are equal..");
 		}
-		catch(Exception e)
+		else
 		{
-			System.out.println("The values given are equal");
+			System.out.println("Given Numbers are not equal...");
 		}
-
-	}	
+	}
 }
 
 //5. Write a program that illustrate the execution order of static block and initializer block.

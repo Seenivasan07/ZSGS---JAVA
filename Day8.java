@@ -90,7 +90,7 @@ class Demo
 		{
 			public int compare(Student i, Student j)
 			{
-				return i.age - j.age;
+				return i.age - j.age;                            
 			}
 		};
 
@@ -140,7 +140,7 @@ class Demo
 	{
 
 		List<Student> studs = new ArrayList<Student>();
-		studs.add(new Student("java", 25));
+		studs.add(new Student("java", 25));cvb b 
 		studs.add(new Student("python", 15));
 		studs.add(new Student("sql", 24));
 

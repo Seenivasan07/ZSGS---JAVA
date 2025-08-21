@@ -69,10 +69,10 @@ class MedicalRecord
 	
 	public void displayRecord()
 	{
-		System.out.println("Patient recordId: "+recordId);
-		System.out.println("Patient Name: "+patientName);
-		System.out.println("Date Of Visit: "+dateOfVisit);
-		System.out.println("Diagnosis: "+diagnosis);
+		System.out.println("Patient recordId: "+this.recordId);
+		System.out.println("Patient Name: "+this.patientName);
+		System.out.println("Date Of Visit: "+this.dateOfVisit);
+		System.out.println("Diagnosis: "+this.diagnosis);
 	}
 }
 class InPatientRecord extends MedicalRecord

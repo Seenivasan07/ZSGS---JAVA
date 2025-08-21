@@ -1,5 +1,6 @@
 /*
 *Day-6 Assignment Questions:*
+
 1. Illustrate the concept-Encapsulation with the Payment Gateway System.[The class should encapsulate private data members such as transaction ID, payer name, payee name, amount, payment method, and transaction status. Provide appropriate public getter and setter methods to access and modify these details securely. Also include a method to display the transaction summary.]
 ‌
 2. Create a Java application that demonstrates the use of user-defined packages by organising classes based on their functionality:

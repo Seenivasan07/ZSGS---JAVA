@@ -250,17 +250,272 @@ class Propagation
 	}
 }
 
+//------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
+//8. Design a login system that throws AuthenticationException if the username or password is incorrect. Handle it and display a login failure message.
 
+class AuthenticationException extends RuntimeException
+{
+	public AuthenticationException(String message)
+	{
+		super(message);
+	}
+}
 
+class Login
+{
+	private String[]username;
+	private String[]password;
+	private int count = 0;
+	
+	public Login(int size)
+	{
+		username = new String[size];
+		password = new String[size];
+	}
 
+	private void setUser(String usernamE)
+	{
+		username[count] = usernamE;
+		return;
+	}
+	private void setPwd(String pwD)
+	{
+		password[count] = pwD;
+		count++;
+		return;
+	}
+		
+	public void setCredentials(String userName, String pwd)
+	{
+		if(count == username.length)
+		{
+			System.out.println(".....Storagee.. is.. Full.....\n\n");
+			return;
+		}
+		setUser(userName);
+		setPwd(pwd);
+		System.out.println("...........Account Created.... Successfully.........\n\n");
+		return;
+	}
 
+	public void login(String name, String passWord)
+	{
+		checkUser(name, passWord);
+		return;
+	}
 
+	private void checkUser(String uname, String upwd)
+	{
+		if(count == 0)
+		{
+			throw new AuthenticationException("......Try to signIn First.......\n\n");
+		}
+		else
+		{
+			boolean val = false;
+			check:
+			for(int i = 0;i<count;i++)
+			{
+				if(username[i].equals(uname))
+				{
+					if(password[i].equals(upwd))
+					{
+						val = true;
+						System.out.println(".....Welcomee... Welcomee...You are Logged in.....\n\n");
+						break check;
+					}
+					else
+					{
+						throw new AuthenticationException("........The Password entered is incorrect!!!........\n\n");
+					}
+				}
+			}
+			if(!val)
+			{
+				throw new AuthenticationException("........The UserName or Password entered is incorrect or not Found........\n.........If you are new.... Sign In First..or....Enter Correctly!!!!!......\n\n");
+			}
+		}
+		return;
+	}
+}
 
+class LoginSystem
+{
+	public static void main(String[]args)
+	{
+		Scanner java = new Scanner(System.in);
+		Login log = new Login(3);
+		System.out.println("\n....................LOGIN SYSTEM....................\n");
+		while(true)
+		{
+			System.out.println("Choose the Option: ");
+			System.out.println("1. New User - Sign In");
+			System.out.println("2. Login - In");
+			System.out.println("3. To Exit");
+			int option = java.nextInt();
+			java.nextLine();
+			switch(option)
+			{
+					
+				case 1: 
+					System.out.println("\nEnter the Username: ");
+					String newUser = java.nextLine();
+					System.out.println("Enter the Password: ");
+					String passWord = java.nextLine();
+					System.out.println("Repeat the Password: ");
+					String repeatPwd = java.nextLine();						
+					if(passWord.equals(repeatPwd))
+					{	
+						log.setCredentials(newUser, passWord);
+						break;
+					}
+					else
+					{
+						System.out.println("Password is MisMatching.... Repeat it Correctly....");
+					}
+					System.out.println("\n\n");
+					break;
 
+				case 2:
 
+					try
+					{
+						System.out.println("\nEnter the UserName: ");
+						String name = java.nextLine();
+						System.out.println("Enter the Password: ");
+						String password = java.nextLine();
+						log.login(name, password);
+						break;
+					}
+					catch(AuthenticationException e)
+					{
+						System.out.println(e.getMessage());
+						break;
+					}
 
+				case 3:
+					System.out.println("\n\n...........................We'll Meet Soon..... :) ....................");
+					return;
 
+				default:
+					System.out.println("Please... Choose only the given OPTIONS........");			
+			}
+		}
+	}
+}
+
+//------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+//9. Create a method to read a file from disk. Handle FileNotFoundException and IOException using try-catch-finally.
+
+class FileIoException
+{
+	public void handleFNFE()
+	{
+		try
+		{
+			Scanner read = new Scanner(new File("Hello.txt"));
+			while(read.hasNextLine())
+			{
+				System.out.println(read.nextLine());
+			}
+			read.close();
+		}
+		catch(FileNotFoundException e)
+		{
+			System.out.println("\n"+e.getMessage());
+		} 
+		return;
+	}
+
+	public void handleIO()
+	{
+		try
+		{
+			FileWriter fw = new FileWriter("Hi.txt");
+			fw.write("Hi, I am Moon..");
+			fw.close();
+		}
+		catch(IOException e)
+		{
+			System.out.println("\n"+e.getMessage());
+		}
+		return;
+	}
+
+	public static void main(String[]args)
+	{
+		Scanner java = new Scanner(System.in);
+		FileIoException fi = new FileIoException();
+		while(true)
+		{
+			System.out.println("\nChoose the option: \n1. To handle FileNotFoundException \n2. To handle IOException \n3. To Exit3");
+			int option = java.nextInt();
+			switch(option)
+			{
+				case 1: 
+					fi.handleFNFE();
+					break;
+			
+				case 2:
+					fi.handleIO();
+					break;
+	
+				case 3:
+					System.out.println("Closing Downn.......");
+					return;
+
+				default:	
+					System.out.println("Enter the correct option....");
+			}
+		}
+	}
+}
+
+//------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+/*10. Write a Java program to manage a voting system where a person must be at least 18 years old to be eligible to vote. Use a custom exception to handle the scenario when an ineligible person tries to register for voting. Display appropriate messages for eligible and ineligible voters.*/
+
+class AgeException extends RuntimeException
+{
+	public AgeException(String message)
+	{
+		super(message);
+	}
+}
+
+class VotingSystem
+{
+	public static void ageCheck(String name, int age)
+	{
+		if(age>=18)
+		{
+			System.out.println(name + " is eligible to vote.....");
+		}
+		else
+		{
+			throw new AgeException(name + " is not eligible to vote.....");
+		}
+	}
+	
+	public static void main(String[]args)	
+	{
+		try
+		{
+			Scanner java = new Scanner(System.in);
+			System.out.println("Enter your name: ");
+			String name = java.nextLine();
+			System.out.println("Enter the age: ");
+			int age = java.nextInt();
+			ageCheck(name, age);
+		}
+		catch(AgeException e)
+		{
+			System.out.println(e.getMessage());
+		}
+	}
+}
 
 
 
