@@ -18,7 +18,9 @@ public class Day1
 	{
 	}
 }
+
 //1. Write a code to illustrate the various scope of variables(static, local, instance, block, final variables)?
+
 class Variable
 {
 	int inst;                                     //instance variable
@@ -43,6 +45,7 @@ class Variable
 }
 
 //2. Write a program in which, declare all data types like integer, double, float, long integer, character and byte data and print them
+
 class DataTypes
 {
 	public static void main(String[]args)
@@ -59,6 +62,7 @@ class DataTypes
 }
 
 //3. Write a program to find the maximum of two numbers using ternary operator.
+
 class Ternary
 {
 	public static void main(String[]args)
@@ -73,6 +77,7 @@ class Ternary
 }
 
 //4. Write a program to check whether the given two numbers are equal or not w/o using comparison operator.
+
 class Equal
 {
 	public static void main(String[]args)
@@ -97,6 +102,7 @@ class Equal
 }
 
 //5. Write a program that illustrate the execution order of static block and initializer block.
+
 class Initialize
 {
 	{
@@ -114,6 +120,7 @@ class Initialize
 }
 
 //6. Write a program that illustrate the Explicit type casting?
+
 class Explicit
 {
 	public static void main(String[]args)
@@ -126,6 +133,7 @@ class Explicit
 }
 
 //7. Write a program to check if a number is a power of 2.
+
 class Power
 {
 	public static void main(String[]args)
@@ -154,6 +162,7 @@ class Power
 }
 
 //8. Write a program to find the first set bit of a number
+
 class SetBit
 {
 	public static void main(String[]args)
@@ -179,6 +188,7 @@ class SetBit
 }
 
 // 9. Write a class Employee with attributes empId, name, department and salary and define a parametrized constructor Employee(int empId, String name, String department, double salary) and assign these variables to instance variables accordingly and display them
+
 class Employee
 {
 	int empId;
@@ -202,6 +212,7 @@ class Employee
 }
 
 //10. Write a program to check whether the object is an instance of a particular class
+
 class Parent
 {	
 }
